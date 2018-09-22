@@ -14,8 +14,19 @@ buildscript {
 
     ext.versions = [
         'kapable': '0.1.0', // gitTag(),
+        'able': '62a12a6a7c',
 
         'kotlin': '1.3.0',
+        'coroutines': '1.0.1',
+
+        'minSdk': 21,
+        'compileSdk': 28,
+        'targetSdk': 28,
+
+        'support': '28.0.0',
+        'lifecycle': '1.1.1',
+        'scanner': '1.1.0',
+        'timber': '4.7.1',
     ]
 
     repositories {
@@ -33,6 +44,7 @@ allprojects {
     repositories {
         google()
         jcenter()
+        maven { url "https://jitpack.io" }
     }
 }
 

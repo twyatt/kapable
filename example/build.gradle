@@ -1,0 +1,37 @@
+apply plugin: 'com.android.application'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
+apply plugin: 'kotlin-kapt'
+
+android {
+    compileSdkVersion versions.compileSdk
+
+    defaultConfig {
+        minSdkVersion versions.minSdk
+
+        applicationId "com.traviswyatt.kapable.example"
+        versionName versions.kapable
+        versionCode 1
+    }
+
+    sourceSets.forEach { sourceSet ->
+        sourceSet.java.srcDirs += "build/generated/source/kaptKotlin/${sourceSet.name}"
+    }
+}
+
+dependencies {
+    implementation project(':annotations')
+    implementation project(':kapable')
+    kapt project(':processor')
+
+    implementation "org.jetbrains.kotlin:kotlin-stdlib:${versions.kotlin}"
+    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:${versions.coroutines}"
+    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:${versions.coroutines}"
+
+    implementation "com.android.support:appcompat-v7:${versions.support}"
+    implementation "com.android.support:recyclerview-v7:${versions.support}"
+    implementation "android.arch.lifecycle:extensions:${versions.lifecycle}"
+
+    implementation "no.nordicsemi.android.support.v18:scanner:${versions.scanner}"
+    implementation "com.jakewharton.timber:timber:${versions.timber}"
+}
